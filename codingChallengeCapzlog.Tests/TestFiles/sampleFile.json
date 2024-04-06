@@ -27,7 +27,28 @@
             "NumberOfPassengersInEconomy": "42",
             "DryOperatingWeight": "28822",
             "DryOperatingIndex": "None",
-            "CrewAndFunctions": "CMD Steve Krebs\n COP Gregory Gillioz\n CAB Luisa Quadros Vissotto\n CAB Rainer Sattler\n SEN Regine Kathrin Schumacher-Horn\n"
+            "CrewAndFunctions": [
+                {
+                    "Name": "Steve Krebs",
+                    "Role": "CMD"
+                },
+                {
+                    "Name": "Gregory Gillioz",
+                    "Role": "COP"
+                },
+                {
+                    "Name": "Luisa Quadros Vissotto",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Rainer Sattler",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Regine Kathrin Schumacher-Horn",
+                    "Role": "SEN"
+                }
+            ]
         }
     },
     "19MAR2024LX1613SWR2TMHBJVY": {
@@ -58,7 +79,28 @@
             "NumberOfPassengersInEconomy": "50",
             "DryOperatingWeight": "28822",
             "DryOperatingIndex": "None",
-            "CrewAndFunctions": "CMD Steve Krebs\n COP Gregory Gillioz\n CAB Luisa Quadros Vissotto\n CAB Rainer Sattler\n SEN Regine Kathrin Schumacher-Horn\n"
+            "CrewAndFunctions": [
+                {
+                    "Name": "Steve Krebs",
+                    "Role": "CMD"
+                },
+                {
+                    "Name": "Gregory Gillioz",
+                    "Role": "COP"
+                },
+                {
+                    "Name": "Luisa Quadros Vissotto",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Rainer Sattler",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Regine Kathrin Schumacher-Horn",
+                    "Role": "SEN"
+                }
+            ]
         }
     },
     "19MAR2024LX1072SWR2ETHBJVN": {
@@ -89,7 +131,28 @@
             "NumberOfPassengersInEconomy": "31",
             "DryOperatingWeight": "28916",
             "DryOperatingIndex": "68.7",
-            "CrewAndFunctions": "CMD Werner Trütsch\n COP Luca Andrea Marchetti\n CAB Helen Meier\n CAB Ena Ramic\n SEN Nico Verhelst\n"
+            "CrewAndFunctions": [
+                {
+                    "Name": "Werner Trütsch",
+                    "Role": "CMD"
+                },
+                {
+                    "Name": "Luca Andrea Marchetti",
+                    "Role": "COP"
+                },
+                {
+                    "Name": "Helen Meier",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Ena Ramic",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Nico Verhelst",
+                    "Role": "SEN"
+                }
+            ]
         }
     },
     "19MAR2024LX1073SWR890MHBJVN": {
@@ -120,7 +183,28 @@
             "NumberOfPassengersInEconomy": "26",
             "DryOperatingWeight": "28916",
             "DryOperatingIndex": "68.7",
-            "CrewAndFunctions": "CMD Werner Trütsch\n COP Luca Andrea Marchetti\n CAB Helen Meier\n CAB Ena Ramic\n SEN Nico Verhelst\n"
+            "CrewAndFunctions": [
+                {
+                    "Name": "Werner Trütsch",
+                    "Role": "CMD"
+                },
+                {
+                    "Name": "Luca Andrea Marchetti",
+                    "Role": "COP"
+                },
+                {
+                    "Name": "Helen Meier",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Ena Ramic",
+                    "Role": "CAB"
+                },
+                {
+                    "Name": "Nico Verhelst",
+                    "Role": "SEN"
+                }
+            ]
         }
     }
 }

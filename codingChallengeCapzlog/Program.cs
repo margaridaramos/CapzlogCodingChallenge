@@ -121,7 +121,7 @@ namespace codingChallengeCapzlog
             }
         }
  
-        static string FormatCrewData(string input)
+        static IEnumerable<Crew> FormatCrewData(string input)
         {
             string[] ROLES = {
                 "Senior Cabin Attendant",
@@ -152,7 +152,20 @@ namespace codingChallengeCapzlog
                 parsedInputWithoutRoles = parsedInputWithoutRoles.Replace(" " + role, "\n");
             }
  
-            return parsedInputWithoutRoles;
+            // transform the extracted crew string into a list of 'Crew' members
+            IEnumerable<Crew> result = parsedInputWithoutRoles
+                .Trim()
+                .Split('\n')
+                .Select(curr =>
+                {
+                    string[] explodedStr = curr.Trim().Split(' ');
+                    string role = explodedStr[0];
+                    string name = string.Join(' ', explodedStr.Skip(1)).Trim();
+ 
+                    return new Crew { Name = name, Role = role };
+                });
+ 
+            return result;
         }
  
         static string FormaGainLossData(string input)

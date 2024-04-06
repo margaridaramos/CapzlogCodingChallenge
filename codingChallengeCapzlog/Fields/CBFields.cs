@@ -13,13 +13,13 @@ namespace codingChallengeCapzlog
         };
     }
 }
-
-public class CBFlightData: DynamicField
+ 
+public class CBFlightData : DynamicField
 {
     public string? FlightInfo { get; set; }
     public string? NumberOfPassengersInBusiness { get; set; }
     public string? NumberOfPassengersInEconomy { get; set; }
     public string? DryOperatingWeight { get; set; }
     public string? DryOperatingIndex { get; set; }
-    public string? CrewAndFunctions { get; set; }
+    public IEnumerable<Crew>? CrewAndFunctions { get; set; }
 }
