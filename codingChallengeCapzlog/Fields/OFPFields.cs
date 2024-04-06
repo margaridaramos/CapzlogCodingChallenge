@@ -4,30 +4,30 @@ namespace codingChallengeCapzlog
     {
         public static List<Field> OFPFields = new List<Field>
         {
-            new Field { FieldName = "Date", MatchingRegex = @"\b(\d{2}[A-Z]{3}\d{2})\b" },
-            new Field { FieldName = "AircraftRegistration", MatchingRegex = @"Reg\.: \s*([A-Z0-9]+)" },
-            new Field { FieldName = "From", MatchingRegex = @"From: \s*([A-Z]+)" },
-            new Field { FieldName = "To", MatchingRegex = @"To: \s*([A-Z]+)" },
-            new Field { FieldName = "AlternateAirdrome1", MatchingRegex = @"ALTN1: \s*([A-Z]{4})\b(?=.*\bCTOT:)" },
-            new Field { FieldName = "AlternateAirdrome2", MatchingRegex = @"ALTN2: \s*([A-Z]{4})\b(?=.*\bDelay:)" },
-            new Field { FieldName = "FlightNumber", MatchingRegex = @"FltNr: \s*([A-Z0-9]+)" },
-            new Field { FieldName = "DepartureTime", MatchingRegex = @"STD:\s*(\d{2}:\d{2})\b(?=.*\bSTA:)" },
-            new Field { FieldName = "ArrivalTime", MatchingRegex = @"STA:\s*(\d{2}:\d{2})\b(?=.*\bSTE:)" },
-            new Field { FieldName = "ZeroFuelMass", MatchingRegex = @"ZFM: \s*(\d+)\b(?=.*\bkg)" },
-            new Field { FieldName = "TimeToDestination", MatchingRegex = @"Taxi:[\s\S]*?(\d:\d{2})[\s\S]*?CF 5%" },
-            new Field { FieldName = "FuelToDestination", MatchingRegex = @"Taxi:[\s\S]*?\d:\d{2}[\s\S]*?(\d\.\d{1})[\s\S]*?CF 5%" },
-            new Field { FieldName = "TimeToAlternate", MatchingRegex = @"CF 5%:[\s\S]*?\d+:\d+[\s\S]*?\d\.\d+[\s\S]*?(\d+:\d+)[\s\S]*?ADD:" },
-            new Field { FieldName = "FuelToAlternate", MatchingRegex = @"CF 5%:[\s\S]*?\d:\d{2}[\s\S]*?\d\.\d{1}[\s\S]*?\d:\d{2}[\s\S]*?(\d\.\d{1})[\s\S]*?ADD:" },
-            new Field { FieldName = "MinimumFuelRequired", MatchingRegex = @"MIN:[\s\S]*?\d:\d{2}[\s\S]*?(\d\.\d{1})[\s\S]*?DF" },
-            new Field { FieldName = "RouteFirstNavigationPoint", MatchingRegex = @"To DEST:[\s]*([A-Z0-9]*)[\s\S]*?To ALTN1:" },
-            new Field { FieldName = "RouteLastNavigationPoint", MatchingRegex = @"To DEST:[\s]*[A-Z0-9]*[\s\S]*?([A-Z0-9]*)[\s]*To ALTN1:" },
-            new Field { FieldName = "GainLoss", MatchingRegex = @"Gain \/ Loss:\s*(\w+\s*\d+)" },
-            new Field { FieldName = "ATC", MatchingRegex = @"ATC: \s*([A-Z0-9]+)" }
+            new Field("Date", @"\b(\d{2}[A-Z]{3}\d{2})\b"),
+            new Field("AircraftRegistration", @"Reg\.: \s*([A-Z0-9]+)"),
+            new Field("From", @"From: \s*([A-Z]+)"),
+            new Field("To", @"To: \s*([A-Z]+)"),
+            new Field("AlternateAirdrome1", @"ALTN1: \s*([A-Z]{4})\b(?=.*\bCTOT:)"),
+            new Field("AlternateAirdrome2", @"ALTN2: \s*([A-Z]{4})\b(?=.*\bDelay:)"),
+            new Field("FlightNumber", @"FltNr: \s*([A-Z0-9]+)"),
+            new Field("DepartureTime", @"STD:\s*(\d{2}:\d{2})\b(?=.*\bSTA:)"),
+            new Field("ArrivalTime", @"STA:\s*(\d{2}:\d{2})\b(?=.*\bSTE:)"),
+            new Field("ZeroFuelMass", @"ZFM: \s*(\d+)\b(?=.*\bkg)"),
+            new Field("TimeToDestination", @"Taxi:[\s\S]*?(\d:\d{2})[\s\S]*?CF 5%"),
+            new Field("FuelToDestination", @"Taxi:[\s\S]*?\d:\d{2}[\s\S]*?(\d\.\d{1})[\s\S]*?CF 5%"),
+            new Field("TimeToAlternate", @"CF 5%:[\s\S]*?\d+:\d+[\s\S]*?\d\.\d+[\s\S]*?(\d+:\d+)[\s\S]*?ADD:"),
+            new Field("FuelToAlternate", @"CF 5%:[\s\S]*?\d:\d{2}[\s\S]*?\d\.\d{1}[\s\S]*?\d:\d{2}[\s\S]*?(\d\.\d{1})[\s\S]*?ADD:"),
+            new Field("MinimumFuelRequired", @"MIN:[\s\S]*?\d:\d{2}[\s\S]*?(\d\.\d{1})[\s\S]*?DF"),
+            new Field("RouteFirstNavigationPoint", @"To DEST:[\s]*([A-Z0-9]*)[\s\S]*?To ALTN1:"),
+            new Field("RouteLastNavigationPoint", @"To DEST:[\s]*[A-Z0-9]*[\s\S]*?([A-Z0-9]*)[\s]*To ALTN1:"),
+            new Field("GainLoss", @"Gain \/ Loss:\s*(\w+\s*\d+)"),
+            new Field("ATC", @"ATC: \s*([A-Z0-9]+)")
         };
     }
 }
 
-public class OFPFlightData: DynamicField
+public class OFPFlightData : DynamicField
 {
     public string? Date { get; set; }
     public string? AircraftRegistration { get; set; }

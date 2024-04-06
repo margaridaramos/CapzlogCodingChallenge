@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.Globalization;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
- 
+
 namespace codingChallengeCapzlog
 {
     public partial class Program
@@ -13,30 +13,30 @@ namespace codingChallengeCapzlog
             string result = ProcessFile(args);
             Console.WriteLine(result);
         }
- 
+
         public static string ProcessFile(string[] args)
         {
             if (args.Length != 1)
             {
                 return "Usage: codingChallengeCapzlog <path_to_pdf>";
             }
- 
+
             string pdfPath = args[0];
             string OFP_IDENTIFIER = "E-Jet Operational Flight Plan";
             string CB_IDENTIFIER = "Observer and Jumpseat Assignments";
- 
+
             try
             {
                 Dictionary<string, Dictionary<string, object>> allFlightsData =
                     new Dictionary<string, Dictionary<string, object>>();
- 
+
                 using (var pdfDocument = PdfDocument.Open(pdfPath))
                 {
- 
+
                     foreach (var page in pdfDocument.GetPages())
                     {
                         var pageContent = ContentOrderTextExtractor.GetText(page);
- 
+
                         if (pageContent.Contains(OFP_IDENTIFIER))
                         {
                             OFPFlightData flightData = new OFPFlightData();
@@ -59,24 +59,29 @@ namespace codingChallengeCapzlog
                                     flightData.SetProperty(field.FieldName, "None");
                                 }
                             }
- 
+
+                            if (flightData.Date == null)
+                            {
+                                break;
+                            }
+
                             string standardizedDate =
                                 DateTime.ParseExact(flightData.Date, "ddMMMyy", CultureInfo.InvariantCulture)
                                 .ToString("ddMMMyyyy").ToUpper();
- 
+
                             string uniqueIdentifier = (
                                 standardizedDate
                                 + flightData.FlightNumber
                                 + flightData.ATC
                                 + flightData.AircraftRegistration
                             ).ToUpper();
- 
+
                             if (!allFlightsData.ContainsKey(uniqueIdentifier))
                             {
                                 // If it doesn't exist, initialize it with an empty dictionary
                                 allFlightsData[uniqueIdentifier] = new Dictionary<string, object>();
                             }
- 
+
                             allFlightsData[uniqueIdentifier]["OFP"] = flightData;
                         }
                         if (pageContent.Contains(CB_IDENTIFIER))
@@ -101,17 +106,20 @@ namespace codingChallengeCapzlog
                                     flightData.SetProperty(field.FieldName, "None");
                                 }
                             }
- 
-                            string uniqueIdentifier = flightData.FlightInfo
+
+                            if (flightData.FlightInfo != null)
+                            {
+                                string uniqueIdentifier = flightData.FlightInfo
                                 .Replace(" ", "")
                                 .Replace("\n", "")
                                 .Replace(".", "")
                                 .ToUpper();
- 
-                            allFlightsData[uniqueIdentifier]["CB"] = flightData;
+
+                                allFlightsData[uniqueIdentifier]["CB"] = flightData;
+                            }
                         }
                     }
- 
+
                     return JsonConvert.SerializeObject(allFlightsData, Formatting.Indented);
                 }
             }
@@ -120,7 +128,7 @@ namespace codingChallengeCapzlog
                 return $"Error: {ex.Message}";
             }
         }
- 
+
         static IEnumerable<Crew> FormatCrewData(string input)
         {
             string[] ROLES = {
@@ -129,7 +137,7 @@ namespace codingChallengeCapzlog
                 "Commander",
                 "Copilot"
             };
- 
+
             string parsedInput = input
                 .Replace("\n", " ")
                 .Trim()
@@ -145,13 +153,13 @@ namespace codingChallengeCapzlog
                     }
                     return acc.Trim() + " " + curr.Trim();
                 });
- 
+
             string parsedInputWithoutRoles = parsedInput;
             foreach (string role in ROLES)
             {
                 parsedInputWithoutRoles = parsedInputWithoutRoles.Replace(" " + role, "\n");
             }
- 
+
             // transform the extracted crew string into a list of 'Crew' members
             IEnumerable<Crew> result = parsedInputWithoutRoles
                 .Trim()
@@ -161,13 +169,13 @@ namespace codingChallengeCapzlog
                     string[] explodedStr = curr.Trim().Split(' ');
                     string role = explodedStr[0];
                     string name = string.Join(' ', explodedStr.Skip(1)).Trim();
- 
-                    return new Crew { Name = name, Role = role };
+
+                    return new Crew(name, role);
                 });
- 
+
             return result;
         }
- 
+
         static string FormaGainLossData(string input)
         {
             string[] parts = input.Split(' ');
