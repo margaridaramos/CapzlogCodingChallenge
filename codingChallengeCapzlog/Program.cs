@@ -49,6 +49,13 @@ namespace codingChallengeCapzlog
                                     {
                                         flightData.SetProperty(field.FieldName, FormaGainLossData(match.Groups[1].Value));
                                     }
+                                    else if (field.FieldName == "Date")
+                                    {
+                                        string standardizedDate =
+                                            DateTime.ParseExact(match.Groups[1].Value, "ddMMMyy", CultureInfo.InvariantCulture)
+                                            .ToString("ddMMMyyyy").ToUpper();
+                                            flightData.SetProperty(field.FieldName, standardizedDate);
+                                    }
                                     else
                                     {
                                         flightData.SetProperty(field.FieldName, match.Groups[1].Value);
@@ -64,13 +71,9 @@ namespace codingChallengeCapzlog
                             {
                                 break;
                             }
-
-                            string standardizedDate =
-                                DateTime.ParseExact(flightData.Date, "ddMMMyy", CultureInfo.InvariantCulture)
-                                .ToString("ddMMMyyyy").ToUpper();
-
+                            
                             string uniqueIdentifier = (
-                                standardizedDate
+                                flightData.Date
                                 + flightData.FlightNumber
                                 + flightData.ATC
                                 + flightData.AircraftRegistration
@@ -96,6 +99,10 @@ namespace codingChallengeCapzlog
                                     {
                                         flightData.SetProperty(field.FieldName, FormatCrewData(match.Groups[1].Value));
                                     }
+                                    else if (field.FieldName == "FlightInfo")
+                                    {
+                                        flightData.SetProperty(field.FieldName, FormatFlightInfoData(match.Groups[1].Value));
+                                    }
                                     else
                                     {
                                         flightData.SetProperty(field.FieldName, match.Groups[1].Value);
@@ -109,10 +116,12 @@ namespace codingChallengeCapzlog
 
                             if (flightData.FlightInfo != null)
                             {
-                                string uniqueIdentifier = flightData.FlightInfo
+                                string uniqueIdentifier = 
+                                (flightData.FlightInfo.Date
+                                + flightData.FlightInfo.FlightNumber
+                                + flightData.FlightInfo.ATC
+                                + flightData.FlightInfo.AircraftRegistration)
                                 .Replace(" ", "")
-                                .Replace("\n", "")
-                                .Replace(".", "")
                                 .ToUpper();
 
                                 allFlightsData[uniqueIdentifier]["CB"] = flightData;
@@ -179,8 +188,19 @@ namespace codingChallengeCapzlog
         static string FormaGainLossData(string input)
         {
             string[] parts = input.Split(' ');
-            string rawValue = parts[^1]; // Accessing last element of array using index
+            string rawValue = parts[^1];
             return input.StartsWith("GAIN") ? "+" + rawValue : "-" + rawValue;
+        }
+
+        static FlightInfo FormatFlightInfoData(string input)
+        {
+            string[] parts = input.Split('\n');
+            string date = parts[0].Replace(".", "").ToUpper();
+            string flightNumber = parts[1];
+            string atc = parts[2];
+            string aircraftRegistration = parts[3];
+
+            return new FlightInfo(date, flightNumber, atc, aircraftRegistration);
         }
     }
 }

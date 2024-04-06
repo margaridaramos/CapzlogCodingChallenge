@@ -27,4 +27,17 @@ public class DynamicField
             throw new ArgumentException($"Property '{propertyName}' not found or not writable");
         }
     }
+
+    public void SetProperty(string propertyName, FlightInfo value)
+    {
+        PropertyInfo? property = GetType().GetProperty(propertyName);
+        if (property != null && property.CanWrite && property.PropertyType == typeof(FlightInfo))
+        {
+            property.SetValue(this, value);
+        }
+        else
+        {
+            throw new ArgumentException($"Property '{propertyName}' not found or not writable");
+        }
+    }
 }

@@ -16,7 +16,7 @@ namespace codingChallengeCapzlog
 
 public class CBFlightData : DynamicField
 {
-    public string? FlightInfo { get; set; }
+    public FlightInfo? FlightInfo { get; set; }
     public string? NumberOfPassengersInBusiness { get; set; }
     public string? NumberOfPassengersInEconomy { get; set; }
     public string? DryOperatingWeight { get; set; }
