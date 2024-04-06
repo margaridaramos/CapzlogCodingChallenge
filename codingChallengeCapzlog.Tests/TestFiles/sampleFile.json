@@ -22,7 +22,7 @@
             "ATC": "SWR612Q"
         },
         "CB": {
-            "FlightInfo": "19.Mar.2024 \nLX1612 \nSWR612Q \nHBJVY\n",
+            "FlightInfo": "19.Mar.2024\nLX1612\nSWR612Q\nHBJVY\n",
             "NumberOfPassengersInBusiness": "9",
             "NumberOfPassengersInEconomy": "42",
             "DryOperatingWeight": "28822",
@@ -53,7 +53,7 @@
             "ATC": "SWR2TM"
         },
         "CB": {
-            "FlightInfo": "19.Mar.2024 \nLX1613 \nSWR2TM \nHBJVY\n",
+            "FlightInfo": "19.Mar.2024\nLX1613\nSWR2TM\nHBJVY\n",
             "NumberOfPassengersInBusiness": "8",
             "NumberOfPassengersInEconomy": "50",
             "DryOperatingWeight": "28822",
@@ -84,7 +84,7 @@
             "ATC": "SWR2ET"
         },
         "CB": {
-            "FlightInfo": "19.Mar.2024 \nLX1072 \nSWR2ET \nHBJVN\n",
+            "FlightInfo": "19.Mar.2024\nLX1072\nSWR2ET\nHBJVN\n",
             "NumberOfPassengersInBusiness": "9",
             "NumberOfPassengersInEconomy": "31",
             "DryOperatingWeight": "28916",
@@ -115,7 +115,7 @@
             "ATC": "SWR890M"
         },
         "CB": {
-            "FlightInfo": "19.Mar.2024 \nLX1073 \nSWR890M \nHBJVN\n",
+            "FlightInfo": "19.Mar.2024\nLX1073\nSWR890M\nHBJVN\n",
             "NumberOfPassengersInBusiness": "1",
             "NumberOfPassengersInEconomy": "26",
             "DryOperatingWeight": "28916",
