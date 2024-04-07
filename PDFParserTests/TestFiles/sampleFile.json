@@ -31,7 +31,7 @@
             "NumberOfPassengersInBusiness": "9",
             "NumberOfPassengersInEconomy": "42",
             "DryOperatingWeight": "28822",
-            "DryOperatingIndex": "None",
+            "DryOperatingIndex": "0",
             "CrewAndFunctions": [
                 {
                     "Name": "Steve Krebs",
@@ -88,7 +88,7 @@
             "NumberOfPassengersInBusiness": "8",
             "NumberOfPassengersInEconomy": "50",
             "DryOperatingWeight": "28822",
-            "DryOperatingIndex": "None",
+            "DryOperatingIndex": "0",
             "CrewAndFunctions": [
                 {
                     "Name": "Steve Krebs",

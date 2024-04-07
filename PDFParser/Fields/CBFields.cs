@@ -3,11 +3,11 @@
     {
         public static List<Field> CBFields = new List<Field>
         {
-            new Field("FlightInfo", @"Crew\n([\s\S]*)DEP ARR"),
+            new Field("FlightInfo", @"Crew\n([\s\S]*)DEP ARR", true),
             new Field("NumberOfPassengersInBusiness", @"Fuel[\s\S]*(\d+)\/\d+[\s\S]*Scheduled"),
             new Field("NumberOfPassengersInEconomy", @"Fuel[\s\S]*\d+\/(\d+)[\s\S]*Scheduled"),
             new Field("DryOperatingWeight", @"EZFW:\n(\d+)kg"),
-            new Field("DryOperatingIndex", @"EZFW:\n\d+kg\n(\d+.\d+)\n"),
+            new Field("DryOperatingIndex", @"EZFW:\n\d+kg\n([\d+.\d+]*0*)\n"),
             new Field("CrewAndFunctions", @"[A-Z]{4}-[A-Z]{4}\n([[A-Z]{3}[\w\W]*]*)\nFunction Name")
         };
     }

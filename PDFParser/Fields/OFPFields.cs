@@ -2,13 +2,13 @@
     {
         public static List<Field> OFPFields = new List<Field>
         {
-            new Field("Date", @"\b(\d{2}[A-Z]{3}\d{2})\b"),
-            new Field("AircraftRegistration", @"Reg\.: \s*([A-Z0-9]+)"),
+            new Field("Date", @"\b(\d{2}[A-Z]{3}\d{2})\b", true),
+            new Field("AircraftRegistration", @"Reg\.: \s*([A-Z0-9]+)", true),
             new Field("From", @"From: \s*([A-Z]+)"),
             new Field("To", @"To: \s*([A-Z]+)"),
             new Field("AlternateAirdrome1", @"ALTN1: \s*([A-Z]{4})\b(?=.*\bCTOT:)"),
             new Field("AlternateAirdrome2", @"ALTN2: \s*([A-Z]{4})\b(?=.*\bDelay:)"),
-            new Field("FlightNumber", @"FltNr: \s*([A-Z0-9]+)"),
+            new Field("FlightNumber", @"FltNr: \s*([A-Z0-9]+)", true),
             new Field("DepartureTime", @"STD:\s*(\d{2}:\d{2})\b(?=.*\bSTA:)"),
             new Field("ArrivalTime", @"STA:\s*(\d{2}:\d{2})\b(?=.*\bSTE:)"),
             new Field("ZeroFuelMass", @"ZFM: \s*(\d+)\b(?=.*\bkg)"),
@@ -20,7 +20,7 @@
             new Field("RouteFirstNavigationPoint", @"To DEST:[\s]*([A-Z0-9]*)[\s\S]*?To ALTN1:"),
             new Field("RouteLastNavigationPoint", @"To DEST:[\s]*[A-Z0-9]*[\s\S]*?([A-Z0-9]*)[\s]*To ALTN1:"),
             new Field("GainLoss", @"Gain \/ Loss:\s*(\w+\s*\d+)"),
-            new Field("ATC", @"ATC: \s*([A-Z0-9]+)")
+            new Field("ATC", @"ATC: \s*([A-Z0-9]+)", true)
         };
     }
 
