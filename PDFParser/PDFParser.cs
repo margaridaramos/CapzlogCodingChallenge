@@ -131,7 +131,7 @@ using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
             }
         }
 
-        static IEnumerable<Crew> FormatCrewData(string input)
+        public static IEnumerable<Crew> FormatCrewData(string input)
         {
             string[] ROLES = {
                 "Senior Cabin Attendant",
@@ -178,14 +178,14 @@ using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
             return result;
         }
 
-        static string FormaGainLossData(string input)
+        public static string FormaGainLossData(string input)
         {
             string[] parts = input.Split(' ');
             string rawValue = parts[^1];
             return input.StartsWith("GAIN") ? "+" + rawValue : "-" + rawValue;
         }
 
-        static FlightInfo FormatFlightInfoData(string input)
+        public static FlightInfo FormatFlightInfoData(string input)
         {
             string[] parts = input.Split('\n');
             string date = parts[0].Replace(".", "").ToUpper();
