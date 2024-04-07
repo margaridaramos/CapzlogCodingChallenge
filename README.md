@@ -4,7 +4,6 @@ This .net console application takes in a flight log PDF and outputs a JSON strin
 
 ## Project structure
 - PDFParser: Module to parse and extract flight data from PDFs
-- PDFParserTests: Unit tests for PDFParser module
 - ConsoleApp: Sample .net console application to demonstrate the usage of PDFParser module
 
 ## Running the project
@@ -17,10 +16,9 @@ To run this project, follow these steps:
 
 ## How to run the tests
 
-This repository also includes a separate project containing the tests.
-To run these tests follow these steps:
+To run the tests follow these steps:
 
- 1. cd into the `PDFParserTests` directory
+ 1. cd into the `PDFParser` directory
  2. run `dotnet test`
  
 ## How to use the PDFParser in your project
