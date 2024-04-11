@@ -2,7 +2,7 @@
 
 This .net console application takes in a flight log PDF and outputs a JSON string containing all the relevant extractable fields.
 
-## Project structure
+## Solution structure
 - PDFParser: Module to parse and extract flight data from PDFs
 - ConsoleApp: Sample .net console application to demonstrate the usage of PDFParser module
 
@@ -13,6 +13,8 @@ To run this project, follow these steps:
  1. clone this repository
  2. cd into the `ConsoleApp` directory
  3. run `dotnet run sampleFile.pdf`
+
+ If a file name is not provided, the console App will request it from the user.
 
 ## How to run the tests
 
