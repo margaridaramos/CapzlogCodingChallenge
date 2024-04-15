@@ -29,6 +29,7 @@ public partial class PDFParser
                 foreach (var page in pdfDocument.GetPages())
                 {
                     var pageContent = ContentOrderTextExtractor.GetText(page);
+                    pageContent = pageContent.Replace("\r", ""); // On windows it adds a /r (carriage return) before any line break
 
                     if (pageContent.Contains(OFP_IDENTIFIER))
                     {
@@ -46,7 +47,9 @@ public partial class PDFParser
                                 {
                                     string standardizedDate =
                                         DateTime.ParseExact(match.Groups[1].Value, "ddMMMyy", CultureInfo.InvariantCulture)
-                                        .ToString("ddMMMyyyy").ToUpper();
+                                        .ToString("ddMMMyyyy")
+                                        .ToUpper()
+                                        .Replace(".",""); // On windows, it adds a . before the year
                                     flightData.SetProperty(field.FieldName, standardizedDate);
                                 }
                                 else
