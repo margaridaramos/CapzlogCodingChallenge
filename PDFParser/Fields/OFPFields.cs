@@ -8,6 +8,8 @@
             new Field("To", @"To: \s*([A-Z]+)"),
             new Field("AlternateAirdrome1", @"ALTN1: \s*([A-Z]{4})\b(?=.*\bCTOT:)"),
             new Field("AlternateAirdrome2", @"ALTN2: \s*([A-Z]{4})\b(?=.*\bDelay:)"),
+            new Field("AlternateAirdrome2Time", @"CF 5%:[\s\S]*?\d+:\d+[\s\S]*?\d\.\d+[\s\S]*?\d+:\d+[\s\S]*?\d\.\d+[\s\S]*?(\d+:\d+)[\s\S]*?ADD:"),
+            new Field("AlternateAirdrome2Fuel", @"CF 5%:[\s\S]*?\d+:\d+[\s\S]*?\d\.\d+[\s\S]*?\d+:\d+[\s\S]*?\d\.\d+[\s\S]*?\d+:\d+[\s\S]*?(\d\.\d+)[\s\S]*?ADD:"),
             new Field("FlightNumber", @"FltNr: \s*([A-Z0-9]+)", true),
             new Field("DepartureTime", @"STD:\s*(\d{2}:\d{2})\b(?=.*\bSTA:)"),
             new Field("ArrivalTime", @"STA:\s*(\d{2}:\d{2})\b(?=.*\bSTE:)"),
@@ -46,4 +48,6 @@ public class OFPFlightData : DynamicField
     public string? RouteLastNavigationPoint { get; set; }
     public string? GainLoss { get; set; }
     public string? ATC { get; set; }
+    public string? AlternateAirdrome2Fuel { get; set; }
+    public string? AlternateAirdrome2Time { get; set; }
 }
